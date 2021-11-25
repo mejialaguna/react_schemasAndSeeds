@@ -1,0 +1,407 @@
+.photo {
+  padding: 10px 10px 10px 10px;
+
+  vertical-align: middle;
+  width: 250px;
+  height: 270px;
+  border-radius: 50%;
+}
+
+.info-text {
+  font-size: 30px;
+  padding-top: 10px;
+  padding-left: 30px;
+  border-bottom: 1px solid White;
+  text-align: center;
+}
+
+
+.topnav-left {
+  float: left;
+  padding: 14px 16px;
+  font-size: 25px;
+}
+
+.topnav-right {
+  float: right;
+  padding: 14px 16px;
+  font-size: 17px;
+  color: black;
+}
+.topnav-center {
+  float: center;
+  padding: 14px 60px;
+  margin-left: 50px;
+  font-size: 25px;
+}
+
+.topnav a:hover {
+  /* background-color: rgb(105, 199, 155); */
+  color: black;
+  /* list-style: none; */
+}
+
+.navbar__link--active {
+  background-color: #ddd;
+  color: black;
+  list-style: none;
+}
+
+.privacy {
+  height: 325px;
+  width: 200px;
+  margin-top: 15px;
+  margin-left: 50px;
+  vertical-align: middle;
+}
+
+.center {
+  text-align: center;
+}
+
+.form-style {
+  margin-left: 150px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.form-style1 {
+  margin-left: 100px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.form-style2 {
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.form-style3 {
+  margin-left: 70px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.form-style4 {
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.form-style5 {
+  margin-left: 400px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px 200px 200px 200px;
+
+  grid-gap: 30px;
+
+  padding-top: 100px;
+  padding-bottom: 50px;
+  margin-right: 1000px;
+}
+
+.grid-item img:hover {
+  opacity: 0.5;
+}
+
+.gallery__img {
+  width: 70%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.company {
+  width: 1200px;
+  height: 600px;
+}
+
+.download {
+  width: 100px;
+  height: 100px;
+  margin: 30px 0px 0px 30px;
+}
+
+@media screen and (max-width: 980px) {
+  .topnav {
+    overflow: auto;
+    padding: 0 2px;
+    min-height: 4vh;
+    background: black;
+    align-items: center;
+    list-style: none;
+    border-bottom: 3px solid White;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .info-text {
+    font-size: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid White;
+    text-align: center;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 300px;
+
+    grid-gap: 80px;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .gallery__img {
+    width: 200%;
+    height: 70%;
+    object-fit: cover;
+  }
+
+  .topnav-left {
+    float: left;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .topnav-right {
+    float: right;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: black;
+  }
+
+  .privacy {
+    height: 400px;
+    width: 275px;
+    margin-top: 15px;
+    margin-left: 50px;
+    vertical-align: middle;
+  }
+
+  .form-style {
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .form-style1 {
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-style2 {
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-style3 {
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-style4 {
+    margin-left: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+  }
+
+  .form-style5 {
+    margin-left: 140px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topnav {
+    overflow: auto;
+    padding: 0 2px;
+    min-height: 4vh;
+    background: black;
+    align-items: center;
+    list-style: none;
+    border-bottom: 3px solid White;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .info-text {
+    font-size: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid White;
+    text-align: center;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 300px;
+
+    grid-gap: 80px;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .gallery__img {
+    width: 200%;
+    height: 70%;
+    object-fit: cover;
+  }
+
+  .topnav-left {
+    float: left;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .topnav-right {
+    float: right;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: black;
+  }
+
+  .privacy {
+    height: 400px;
+    width: 275px;
+    margin-top: 15px;
+    margin-left: 50px;
+    vertical-align: middle;
+  }
+
+  .form-style {
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .form-style1 {
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-style2 {
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-style3 {
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-style4 {
+    margin-left: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+  }
+
+  .form-style5 {
+    margin-left: 140px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .topnav {
+    overflow: auto;
+    padding: 0 2px;
+    min-height: 4vh;
+    background: black;
+    align-items: center;
+    list-style: none;
+    border-bottom: 3px solid White;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .info-text {
+    font-size: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid White;
+    text-align: center;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 300px;
+
+    grid-gap: 80px;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .gallery__img {
+    width: 200%;
+    height: 70%;
+    object-fit: cover;
+  }
+
+  .topnav-left {
+    float: left;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .topnav-right {
+    float: right;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: black;
+  }
+
+  .privacy {
+    height: 400px;
+    width: 275px;
+    margin-top: 15px;
+    margin-left: 50px;
+    vertical-align: middle;
+  }
+  .form-style {
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .form-style1 {
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-style2 {
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-style3 {
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .form-style4 {
+    margin-left: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+  }
+
+  .form-style5 {
+    margin-left: 140px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
