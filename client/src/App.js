@@ -14,8 +14,6 @@ import SideBar from "./components/SideBar";
 import About from "./components/About";
 import Main from "./components/Main"
 import ProductContext from "./utils/productContext";
-import SignIn from "./components/Sign/SignIn"
-import SignUp from "./components/Sign/SignupForm"
 
 
 const httpLink = createHttpLink({

@@ -7,8 +7,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 
-import { QUERY_PRODUCTS } from "../../utils/queries";
-import data from "../../data";
+// import { QUERY_PRODUCTS } from "../../utils/queries";
+// import data from "../../data";
 
 const Categories = [
   { title: "jewelery" },
