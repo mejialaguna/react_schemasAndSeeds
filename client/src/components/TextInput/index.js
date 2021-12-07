@@ -68,13 +68,13 @@ export default function FreeSolo({ setProducts }) {
         console.log(searchInput);
         console.log(response);
 
-        // if (!response.ok) {
-        //   throw new Error("something went wrong!");
-        // }
+        if (!response) {
+          throw new Error("something went wrong!");
+        }
 
-        // const items = await response.json();
+        const items = await response //.json();
         // console.log(items);
-        const Data = response.map((item) => ({
+        const Data = items.map((item) => ({
           name: item.name,
           description: item.description,
           price: item.price,

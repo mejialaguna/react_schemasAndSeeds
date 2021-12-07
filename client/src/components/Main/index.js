@@ -11,6 +11,7 @@ import img6 from "../../img/img6.jpg";
 import img7 from "../../img/img7.jpg";
 import ProductContext from "../../utils/productContext";
 import { Container, Card, CardColumns } from "react-bootstrap";
+import Rating from "../Rating"
 
 const display = {
   img: {
@@ -28,6 +29,9 @@ const display = {
   border1: {
     border: "3px black solid",
   },
+  rating: {
+    display: "inline-block"
+  }
 };
 
 const Main = () => {
@@ -113,6 +117,10 @@ const Main = () => {
                     <Card.Title key={item.name}>{item.name}</Card.Title>
                     {/* <p className="small"> {item.name}</p> */}
                     <Card.Text>{item.description}</Card.Text>
+                    <div style={display.rating}>
+                      <Rating item={item} />
+                      <span> {item.rating}</span>
+                    </div>
                     <Card.Footer> ${item.price} </Card.Footer>
                   </Card.Body>
                 </Card>
