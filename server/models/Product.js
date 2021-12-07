@@ -13,28 +13,26 @@ const ProductSchema = new Schema(
     },
     description: {
       type: String,
-      // required: true
+      required: true,
     },
     price: {
       type: Number,
-      integer: true,
-      get: (v) => Math.round(v),
-      set: (v) => Math.round(v),
-      // required: true,
-      maxLength: [6, "price should not exceed 6 digit"],
+      required: true,
+      min: 0.99,
     },
     rating: {
       type: Number,
-      default: 0,
+      required: true,
+      min: 0.99,
     },
 
     category: {
       type: String,
-      // required: true
+      required: true,
     },
     stock: {
       type: Number,
-      // required: true,
+      required: true,
       default: 15,
     },
     images: [imageSchema],

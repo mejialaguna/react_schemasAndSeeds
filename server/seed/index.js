@@ -21,12 +21,12 @@ mongoose.connect(
 const products = () => {
   return axios.get("https://fakestoreapi.com/products")
       .then(({data} ) => {
-        // console.log(data , "=================================")
+        console.log(data , "=================================")
       const dataProduct = data.map((item) => {
         return {
           name: item.title,
-          description: item.description ? item.name : "miscellaneous",
-          price: item.price ? item.price : 20,
+          price: item.price,
+          description: item.description,
           rating: item.rating.rate,
           category: item.category,
           stock: item.rating.count,
@@ -35,7 +35,7 @@ const products = () => {
       })
       Product.deleteMany({}).then(() => {
           Product.insertMany(dataProduct).then((data) => {
-              console.log(data + "products inserted")
+              console.log(dataProduct.length + " products inserted")
           })
       })
         // return dataProduct;

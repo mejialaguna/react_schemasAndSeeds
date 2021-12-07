@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import img1 from "../../img/img-1.jpg";
 import img2 from "../../img/img-2.jpg";
-import img3 from "../../img/img-3.jpg";
 import img4 from "../../img/img-4.jpg";
 import img5 from "../../img/img5.jpg";
 import img6 from "../../img/img6.jpg";
@@ -83,11 +82,11 @@ const Main = () => {
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2} style={display.centerImg}>
               <Grid item xs={6} md={5}>
-                <img style={display.border1} src={img5}></img>
+                <img alt="apparel" style={display.border1} src={img5}></img>
               </Grid>
               <Grid item xs={6} md={3}>
-                <img src={img6} style={display.border}></img>
-                <img src={img7} style={display.border}></img>
+                <img alt="apparel" src={img6} style={display.border}></img>
+                <img alt="apparel" src={img7} style={display.border}></img>
               </Grid>
             </Grid>
           </Box>
@@ -111,7 +110,7 @@ const Main = () => {
                     />
                   ) : null}
                   <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
+                    <Card.Title key={item.name}>{item.name}</Card.Title>
                     {/* <p className="small"> {item.name}</p> */}
                     <Card.Text>{item.description}</Card.Text>
                     <Card.Footer> ${item.price} </Card.Footer>

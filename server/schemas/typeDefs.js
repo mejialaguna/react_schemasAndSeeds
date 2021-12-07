@@ -13,8 +13,8 @@ const typeDefs = gql`
     _id: ID!
     name: String
     description: String
-    price: Int
-    rating: Int
+    price: Float
+    rating: Float
     images: [Images]
     category: String
     stock: Int
@@ -63,7 +63,7 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    getAllProducts: [Product]
+    products: [Product]
     product(_id: ID!): Product
     getAllReviews: [Product]
     getContactFormMessages: [ContactUs]

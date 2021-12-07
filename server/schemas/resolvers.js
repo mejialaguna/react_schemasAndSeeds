@@ -13,8 +13,8 @@ const resolvers = {
       return await User.findOne({ username }).select("-__v -password");
     },
 
-    getAllProducts: async () => {
-      return await Product.find().populate("reviews");
+    products: async () => {
+      return await Product.find().populate("reviews" + "images")
     },
     product: async (parent, { _id }) => {
       return await Product.findOne({ _id }).populate("reviews");
