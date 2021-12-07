@@ -6,24 +6,24 @@ const resolvers = {
   Query: {
     // get all users
     users: async () => {
-      return User.find().select("-__v -password");
+      return await User.find().select("-__v -password");
     },
     // get a user by username
     user: async (parent, { username }) => {
-      return User.findOne({ username }).select("-__v -password");
+      return await User.findOne({ username }).select("-__v -password");
     },
 
     getAllProducts: async () => {
-      return Product.find().populate("reviews");
+      return await Product.find().populate("reviews");
     },
     product: async (parent, { _id }) => {
-      return Product.findOne({ _id }).populate("reviews");
+      return await Product.findOne({ _id }).populate("reviews");
     },
     getAllReviews: async () => {
-      return Product.find();
+      return await Product.find();
     },
     getContactFormMessages: async () => {
-      return ContactUs.find();
+      return await ContactUs.find();
     },
   },
 
