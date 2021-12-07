@@ -40,7 +40,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <span>Global Trade</span>
+      <span>Global-commerce</span>
       {new Date().getFullYear()}
       {"."}
     </Typography>

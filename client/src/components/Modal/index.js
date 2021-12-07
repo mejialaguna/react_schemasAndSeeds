@@ -43,8 +43,8 @@ function ModalC(props) {
               <h1 style={display.header}>Please Contact Us</h1>
             </Modal.Title>
           </Modal.Header>
-          <Modal.Body show={isModalOpen} onHide={onClose} >
-            <ContactForm onClose={ onclose }/>
+          <Modal.Body show={isModalOpen} onHide={onClose}>
+            <ContactForm onClose={onclose} />
           </Modal.Body>
           <Modal.Footer>
             <Button style={display.variant} onClick={onClose}>
@@ -65,7 +65,7 @@ function ModalC(props) {
         >
           <Modal.Header>
             <Modal.Title id="contained-modal-title-vcenter">
-              Global Trade Privacy Policy
+              Global-commerce Privacy Policy
             </Modal.Title>
           </Modal.Header>
           <Modal.Body show={isModalOpen} onHide={onClose} animation={true}>
@@ -74,8 +74,8 @@ function ModalC(props) {
               <br />
               <br />
               Global Trade LLC ("us", "we", or "our") operates{" "}
-              <a href="http://www.global-trade.com">
-                http://www.global-trade.com
+              <a href="http://www.Global-commerce.com">
+                http://www.Global-commerce.com
               </a>
               . This page informs you of our policies regarding the collection,
               use and disclosure of Personal Information we receive from users

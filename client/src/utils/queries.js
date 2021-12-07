@@ -1,5 +1,4 @@
-// import { gql } from "@apollo/client";
-
+import { gql } from "@apollo/client";
 // // export const GET_USER = gql`
 // //   {
 // //     me {
@@ -11,18 +10,19 @@
 // //   }
 // // `;
 
-// export const QUERY_PRODUCTS = gql`
-//   query getAllProducts {
-//   products{
-//     _id
-//     name
-//     description
-//     price
-//     rating
-//     images{
-//       url
-//     }
-//   }
-// `;
+ const QUERY_PRODUCTS = gql`
+  query getAllProducts {
+  getAllProducts{
+    _id
+    name
+    description
+    price
+    images{
+      url
+    }
+  }
+}
+`;
 
-// // export default { GET_USER, QUERY_PRODUCTS };
+export default { QUERY_PRODUCTS };
+

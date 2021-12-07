@@ -1,14 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
-import getProducts from "../../utils/AP_i/allProducts";
-import productsCategories from "../../utils/AP_i/productsCategories";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
+import { useQuery } from "@apollo/client";
+import QUERY_PRODUCTS  from "../../utils/queries";
 
-// import { QUERY_PRODUCTS } from "../../utils/queries";
-// import data from "../../data";
 
 const Categories = [
   { title: "jewelery" },
@@ -41,12 +39,16 @@ function sleep(delay = 0) {
 }
 
 
-export default function FreeSolo({setProducts}) {
-  const [searchedProducts, setSearchedProducts] = useState([]);
+export default function FreeSolo({ setProducts }) {
+  // const [searchedProducts, setSearchedProducts] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
-  const loading = open && options.length === 0;
+  const load = open && options.length === 0;
+
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const products = data?.products || {};
+
 
   const handleSubmit = async (event) => {
     event.persist();
@@ -55,39 +57,15 @@ export default function FreeSolo({setProducts}) {
       return false;
     }
 
+      if (loading) {
+        return <div>loading...</div>;
+      }
+
+
     if (searchInput === "products") {
       try {
-        const response = await getProducts(searchInput);
+        const response = await products;
 
-        console.log(searchInput);
-        console.log(response);
-        if (!response.ok) {
-          throw new Error("something went wrong!");
-        }
-
-        const items = await response.json();
-        console.log(items);
-        const Data = items.map((item) => ({
-          name: item.title,
-          description: item.description,
-          price: item.price,
-          rating: item.rating.rate,
-          category: item.category,
-          stock: item.rating.count,
-          images: item.image,
-        }));
-
-        // console.log(Data)
-        // setSearchedProducts(Data);
-        setProducts(Data)
-        setSearchInput("");
-      } catch (err) {
-        console.error(err);
-      }
-    } else {
-      try {
-        const response = await productsCategories(searchInput);
-        event.persist();
         console.log(searchInput);
         console.log(response);
         if (!response.ok) {
@@ -119,7 +97,7 @@ export default function FreeSolo({setProducts}) {
   React.useEffect(() => {
     let active = true;
 
-    if (!loading) {
+    if (!load) {
       return undefined;
     }
 
@@ -134,7 +112,7 @@ export default function FreeSolo({setProducts}) {
     return () => {
       active = false;
     };
-  }, [loading]);
+  }, [load]);
 
   React.useEffect(() => {
     if (!open) {
@@ -158,13 +136,13 @@ export default function FreeSolo({setProducts}) {
           isOptionEqualToValue={(option, value) => option.title === value.title}
           getOptionLabel={(option) => option.title}
           options={options}
-          loading={loading}
+          load={load}
           renderInput={(params) => (
             <TextField
               {...params}
               style={{
                 marginTop: 3,
-                backgroundColor: "white"
+                backgroundColor: "white",
               }}
               name="searchInput"
               value={searchInput}
@@ -174,7 +152,7 @@ export default function FreeSolo({setProducts}) {
                 ...params.InputProps,
                 endAdornment: (
                   <React.Fragment>
-                    {loading ? (
+                    {load ? (
                       <CircularProgress color="inherit" size={20} />
                     ) : null}
                     {params.InputProps.endAdornment}
@@ -189,8 +167,6 @@ export default function FreeSolo({setProducts}) {
           <img src="https://img.icons8.com/ios-glyphs/20/000000/search--v2.png" />
         </Button>
       </form>
-
-     
     </div>
   );
 }
