@@ -14,6 +14,9 @@ import SideBar from "./components/SideBar";
 import About from "./components/About";
 import Main from "./components/Main"
 import ProductContext from "./utils/productContext";
+import Login from "./components/Sign/SignIn"
+import SignUp from "./components/Sign/SignupForm";
+
 
 
 const httpLink = createHttpLink({
@@ -46,6 +49,8 @@ function App() {
             <SideBar setProducts={setProducts} />
             <Switch>
               <Route exact path="/" component={Main} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignUp} />
               <Route path="/about" exact component={About} />
               <Route component={NoMatch} />
             </Switch>

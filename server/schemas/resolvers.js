@@ -12,12 +12,14 @@ const resolvers = {
     user: async (parent, { username }) => {
       return await User.findOne({ username }).select("-__v -password");
     },
-
     products: async () => {
       return await Product.find().populate("reviews" + "images")
     },
     product: async (parent, { _id }) => {
       return await Product.findOne({ _id }).populate("reviews");
+    },
+    category: async (parent , args) => {
+      return await Product.find(args)
     },
     getAllReviews: async () => {
       return await Product.find();

@@ -14,6 +14,7 @@ import Auth from "../../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../../utils/mutations";
 import Snackbar from "../../SnackBar";
+import { Link } from "react-router-dom";
 
 const display = {
   width: {
@@ -202,7 +203,7 @@ export default function SignupForm(props) {
                 open={open}
                 currentText={currentText}
                 severity={"info"}
-                message= "Thank for Sign in up."
+                message="Thank for Sign in up."
               />
             </Button>
             <Grid container justifyContent="flex-end">
@@ -212,7 +213,7 @@ export default function SignupForm(props) {
                   onClick={() => setCurrentText("Sign In")}
                   style={display.pointer}
                 >
-                  Already have an account? Sign in
+                  <Link to="/login">Already have an account? Sign in</Link>
                 </Typography>
               </Grid>
             </Grid>

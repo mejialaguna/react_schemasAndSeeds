@@ -5,8 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import { useQuery } from "@apollo/client";
-import {QUERY_PRODUCTS} from "../../utils/queries";
-
+import { QUERY_PRODUCTS, QUERY_CATEGORY } from "../../utils/queries";
 
 const Categories = [
   { title: "jewelery" },
@@ -38,7 +37,6 @@ function sleep(delay = 0) {
   });
 }
 
-
 export default function FreeSolo({ setProducts }) {
   const [searchInput, setSearchInput] = useState("");
   const [open, setOpen] = React.useState(false);
@@ -46,9 +44,12 @@ export default function FreeSolo({ setProducts }) {
   const loading1 = open && options.length === 0;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
-  // const products = data?.products || {};
+  const { data: categoryData } = useQuery();
+  const products = data?.products || [];
+  const categories = categoryData?.categories || [];
+  // console.log(categories);
+  
 
-  // console.log(data)
 
   const handleSubmit = async (event) => {
     event.persist();
@@ -57,14 +58,41 @@ export default function FreeSolo({ setProducts }) {
       return false;
     }
 
-      if (loading) {
-        return <div>loading...</div>;
-      }
-
+    if (loading) {
+      return <div>loading...</div>;
+    }
 
     if (searchInput === "products") {
       try {
-        const response = await data.products;
+        const response = await products;
+        console.log(searchInput);
+        console.log(response);
+
+        if (!response) {
+          throw new Error("something went wrong!");
+        }
+
+        const items = await response; //.json();
+        console.log(items);
+        const Data = items.map((item) => ({
+          name: item.name,
+          description: item.description,
+          price: item.price,
+          rating: item.rating,
+          category: item.category,
+          stock: item.stock,
+          images: [item.images[0].url],
+        }));
+        // console.log(Data);
+
+        setProducts(Data);
+        setSearchInput("");
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      try {
+        const response = await categories
         console.log(searchInput);
         console.log(response);
 
@@ -83,9 +111,9 @@ export default function FreeSolo({ setProducts }) {
           stock: item.stock,
           images: [item.images[0].url],
         }));
-           console.log(Data)
-       
-         setProducts(Data);
+        console.log(Data);
+
+        setProducts(Data);
         setSearchInput("");
       } catch (err) {
         console.error(err);
@@ -163,7 +191,10 @@ export default function FreeSolo({ setProducts }) {
         />
 
         <Button variant="outlined" type="submit">
-          <img src="https://img.icons8.com/ios-glyphs/20/000000/search--v2.png" alt="submit btn" />
+          <img
+            src="https://img.icons8.com/ios-glyphs/20/000000/search--v2.png"
+            alt="submit btn"
+          />
         </Button>
       </form>
     </div>

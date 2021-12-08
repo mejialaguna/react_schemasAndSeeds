@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import ModalC from "../Modal";
-
 
 const display = {
   back: {},
@@ -13,7 +12,7 @@ const display = {
     padding: "0 33px",
     textDecorationLine: "none",
     color: "#007bff",
-    cursor: "pointer"
+    cursor: "pointer",
   },
   sticky: {
     width: "100%",
@@ -30,14 +29,18 @@ const display = {
   each: {
     margin: " 0 5px",
   },
+  LinkText: {
+    color: "white",
+    textDecoration: "none",
+  },
 };
 
 function Footer() {
-    const [currentText, setCurrentText] = useState();
-    const [isModalOpen, setIsModalOpen] = useState(false);
-     const toggleModal = () => {
-       setIsModalOpen(!isModalOpen);
-     };
+  const [currentText, setCurrentText] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
   return (
     <div style={display.sticky}>
       <div style={display.flex}>
@@ -45,23 +48,22 @@ function Footer() {
           <span> &copy; 2021 Global Trade, Inc.</span>
         </div>
         <div>
-          <span           
+          <span
+            style={display.contact}
             onClick={() => {
               setIsModalOpen(true);
               setCurrentText("CONTACT US");
             }}
-            style={display.contact}
           >
             CONTACT US
           </span>
           <span
+            style={display.contact}
             onClick={() => {
               setIsModalOpen(true);
               setCurrentText("Privacy Policy");
             }}
-            style={display.contact}
           >
-            {" "}
             Privacy Policy
           </span>
           {isModalOpen && (
@@ -74,17 +76,49 @@ function Footer() {
         </div>
       </div>
       <div style={display.credit}>
-        <img style={display.each} alt="cc cards" src="https://img.icons8.com/color/30/000000/visa.png" />
-        <img style={display.each} alt="cc cards" src="https://img.icons8.com/ios-filled/30/000000/mastercard.png" />
-        <img style={display.each} alt="cc cards" src="https://img.icons8.com/color/30/000000/amex.png" />
-        <img style={display.each} alt="cc cards" src="https://img.icons8.com/color/30/000000/discover.png" />
-        <img style={display.each} alt="cc cards" src="https://img.icons8.com/ios-filled/30/000000/apple-pay.png" />
-        <img style={display.each} alt="cc cards" src="https://img.icons8.com/color/30/000000/google-pay-india.png" />
-        <img style={display.each} alt="cc cards" src="https://img.icons8.com/windows/30/000000/amazon-pay.png" />
-        <img style={display.each} alt="cc cards" src="https://img.icons8.com/color/30/000000/samsung.png" />
+        <img
+          style={display.each}
+          alt="cc cards"
+          src="https://img.icons8.com/color/30/000000/visa.png"
+        />
+        <img
+          style={display.each}
+          alt="cc cards"
+          src="https://img.icons8.com/ios-filled/30/000000/mastercard.png"
+        />
+        <img
+          style={display.each}
+          alt="cc cards"
+          src="https://img.icons8.com/color/30/000000/amex.png"
+        />
+        <img
+          style={display.each}
+          alt="cc cards"
+          src="https://img.icons8.com/color/30/000000/discover.png"
+        />
+        <img
+          style={display.each}
+          alt="cc cards"
+          src="https://img.icons8.com/ios-filled/30/000000/apple-pay.png"
+        />
+        <img
+          style={display.each}
+          alt="cc cards"
+          src="https://img.icons8.com/color/30/000000/google-pay-india.png"
+        />
+        <img
+          style={display.each}
+          alt="cc cards"
+          src="https://img.icons8.com/windows/30/000000/amazon-pay.png"
+        />
+        <img
+          style={display.each}
+          alt="cc cards"
+          src="https://img.icons8.com/color/30/000000/samsung.png"
+        />
       </div>
     </div>
   );
-    }   
+}
 
 export default Footer;

@@ -14,6 +14,7 @@ import Auth from "../../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../../utils/mutations";
 import Snackbar from "../../SnackBar";
+import { Link } from "react-router-dom";
 
 const display = {
   width: {
@@ -164,8 +165,7 @@ export default function SignIn(props) {
                 {error && <div>Password is required!</div>}
               </Form.Control.Feedback>
               <Button
-                disabled={!(userFormData.email &&
-                  userFormData.password)}
+                disabled={!(userFormData.email && userFormData.password)}
                 type="submit"
                 fullWidth
                 variant="contained"
@@ -186,7 +186,7 @@ export default function SignIn(props) {
                     onClick={() => setCurrentText("Sign UP")}
                     style={display.pointer}
                   >
-                    Don't have an account? Sign Up
+                    <Link to="/signup">Don't have an account? Sign Up</Link>
                   </Typography>
                 </Grid>
               </Grid>

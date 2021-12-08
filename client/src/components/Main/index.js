@@ -11,7 +11,7 @@ import img6 from "../../img/img6.jpg";
 import img7 from "../../img/img7.jpg";
 import ProductContext from "../../utils/productContext";
 import { Container, Card, CardColumns } from "react-bootstrap";
-import Rating from "../Rating"
+import Rating from "../Rating";
 
 const display = {
   img: {
@@ -30,8 +30,8 @@ const display = {
     border: "3px black solid",
   },
   rating: {
-    display: "inline-block"
-  }
+    display: "inline-block",
+  },
 };
 
 const Main = () => {
@@ -98,9 +98,7 @@ const Main = () => {
       ) : (
         <Container>
           <h2>
-            {products.length
-              ? `Viewing ${products.length} results:`
-              : null}
+            {products.length ? `Viewing ${products.length} results:` : null}
           </h2>
           <CardColumns>
             {products.map((item) => {
@@ -108,8 +106,9 @@ const Main = () => {
                 <Card key={item.productId} border="dark">
                   {item.images ? (
                     <Card.Img
+                      key={item.name}
                       src={item.images}
-                      alt={`The cover for ${item.title}`}
+                      alt={`The cover for ${item.name}`}
                       variant="top"
                     />
                   ) : null}
@@ -121,7 +120,7 @@ const Main = () => {
                       <Rating item={item} />
                       <span> {item.rating}</span>
                     </div>
-                    <Card.Footer> ${item.price} </Card.Footer>
+                    <Card.Footer> $ {item.price} </Card.Footer>
                   </Card.Body>
                 </Card>
               );
