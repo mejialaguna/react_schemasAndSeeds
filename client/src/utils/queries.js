@@ -15,21 +15,21 @@ export const QUERY_CATEGORY = gql`
   }
 `;
 
- export const QUERY_PRODUCTS = gql`
+export const QUERY_PRODUCTS = gql`
   query getAllProducts {
-  products{
-    _id
-    name
-    description
-    price
-    rating
-    images{
-      url
+    products {
+      _id
+      name
+      description
+      price
+      rating
+      images {
+        url
+      }
+      category
+      stock
     }
-    category
-    stock
   }
-}
 `;
 
 
