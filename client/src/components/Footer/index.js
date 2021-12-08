@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import ModalC from "../Modal";
 
 const display = {
-  back: {},
   flex: {
     display: "flex",
     justifyContent: "space-between",
-    margin: "20px",
+    margin: "15px",
   },
   contact: {
     padding: "0 33px",
@@ -23,7 +22,7 @@ const display = {
   credit: {
     textAlign: "center",
     borderTop: "1px black solid",
-    margin: "20px 300px",
+    // margin: "20px 300px",
     padding: "10px",
   },
   each: {
