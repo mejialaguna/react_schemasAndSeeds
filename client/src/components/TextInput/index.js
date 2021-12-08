@@ -5,7 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import { useQuery } from "@apollo/client";
-import { QUERY_CATEGORY, QUERY_PRODUCTS } from "../../utils/queries";
+import { QUERY_PRODUCTS } from "../../utils/queries";
 
 const Categories = [
   { title: "jewelery" },
@@ -44,11 +44,12 @@ export default function FreeSolo({ setProducts }) {
   const loading1 = open && options.length === 0;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
-  const { data: categoryData } = useQuery(QUERY_CATEGORY);
   const products = data?.products || [];
-  const categories = categoryData?.categories || [];
-  console.log(products);
+  const categories = products.filter((category) => {
+    return category.category === searchInput  
+  })
   console.log(categories);
+  // console.log(products);
   
 
 
@@ -74,7 +75,6 @@ export default function FreeSolo({ setProducts }) {
         }
 
         const items = await response; //.json();
-        // console.log(items);
         const Data = items.map((item) => ({
           name: item.name,
           description: item.description,
@@ -84,7 +84,6 @@ export default function FreeSolo({ setProducts }) {
           stock: item.stock,
           images: [item.images[0].url],
         }));
-        // console.log(Data);
 
         setProducts(Data);
         setSearchInput("");
@@ -95,7 +94,7 @@ export default function FreeSolo({ setProducts }) {
       try {
         const response = await categories
         console.log(searchInput);
-        // console.log(response);
+        console.log(response);
 
         if (!response) {
           throw new Error("something went wrong!");
@@ -112,7 +111,7 @@ export default function FreeSolo({ setProducts }) {
           stock: item.stock,
           images: [item.images[0].url],
         }));
-        console.log(Data);
+        // console.log(Data);
 
         setProducts(Data);
         setSearchInput("");

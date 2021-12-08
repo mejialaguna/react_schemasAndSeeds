@@ -11,6 +11,7 @@ import img7 from "../../img/img7.jpg";
 const display = {
   size: {
     height: 200,
+    borderRadius: 5
 	},
 	text: {
 	textAlign: "center",
