@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useQuery } from "@apollo/client";
@@ -32,17 +31,8 @@ const display = {
   },
 };
 
-function sleep(delay = 0) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
 export default function FreeSolo({ setProducts }) {
   const [searchInput, setSearchInput] = useState("");
-  const [open, setOpen] = React.useState(false);
-  const [options, setOptions] = React.useState([]);
-  const loading = open && options.length === 0;
 
   const { loading: productLoading, data: productData } =
     useQuery(QUERY_PRODUCTS);
@@ -91,12 +81,10 @@ export default function FreeSolo({ setProducts }) {
         }));
 
         setProducts(Data);
-        
       } catch (err) {
         console.error(err);
       }
       // setSearchInput(" ");
-
     } else {
       try {
         if (categoryLoading) {
@@ -120,74 +108,42 @@ export default function FreeSolo({ setProducts }) {
           images: [item.images[0].url],
         }));
 
+        setSearchInput(" ");
         setProducts(Data); // global props sending products to main component
-
-        
       } catch (err) {
         console.error(err);
       }
-      setSearchInput(" ");
     }
-
   };
-
-  React.useEffect(() => {
-    let active = true;
-
-    if (!loading) {
-      return undefined;
-    }
-
-    (async () => {
-      await sleep(1e3);
-
-      if (active) {
-        setOptions([...Categories]);
-      }
-    })();
-
-    return () => {
-      active = false;
-    };
-  }, [loading]);
-
-  React.useEffect(() => {
-    if (!open) {
-      setOptions([]);
-    }
-  }, [open]);
 
   return (
     <div>
       <form style={display.form} onSubmit={handleSubmit}>
-        <Stack spacing={4} sx={{ width: 400 }}>
+        <Stack spacing={2} sx={{ width: 500 }}>
           <Autocomplete
             id="size-small-outlined"
             size="small"
             options={Categories}
+            onSelect={(e) => setSearchInput(e.target.value)}
             getOptionLabel={(option) => option.title}
-            // defaultValue={Categories}
+            type="submit"
             renderInput={(params) => (
               <TextField
                 {...params}
                 name="searchInput"
-                value={searchInput}
-                onSelect={(e) => setSearchInput(e.target.value)}
-                variant="standard"
                 label="Search"
                 placeholder="Categories"
-                
               />
             )}
           />
         </Stack>
 
-        <Button variant="outlined" type="submit">
+        {/* <Button variant="outlined" type="submit">
           <img
             src="https://img.icons8.com/ios-glyphs/20/000000/search--v2.png"
             alt="submit btn"
           />
-        </Button>
+        </Button> */}
       </form>
     </div>
   );

@@ -43,22 +43,23 @@ function App() {
   const [products , setProducts] = useState([])
   return (
     // <div style={{ minHeight: "100vh", position: "relative" }}>
-      <ApolloProvider client={client}>
-        <ProductContext.Provider value={products}>
-          <Router>
-            <SideBar setProducts={setProducts} />
-            <Switch>
-              <Route exact path="/" component={Main} key="#"/>
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={SignUp} />
-              <Route path="/about" exact component={About} />
-              <Route component={NoMatch} />
-            </Switch>
+    <ApolloProvider client={client}>
+      <ProductContext.Provider value={products}>
+        <Router>
+          <SideBar setProducts={setProducts} />
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route exact path="/" component={SideBar} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route path="/about" exact component={About} />
+            <Route component={NoMatch} />
+          </Switch>
 
-            <Footer />
-          </Router>
-        </ProductContext.Provider>
-      </ApolloProvider>
+          <Footer />
+        </Router>
+      </ProductContext.Provider>
+    </ApolloProvider>
     // </div>
   );
 }

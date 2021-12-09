@@ -21,25 +21,6 @@ const display = {
   },
 };
 
-// const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-//   ({ theme, open }) => ({
-//     flexGrow: 1,
-//     padding: theme.spacing(3),
-//     transition: theme.transitions.create("margin", {
-//       easing: theme.transitions.easing.sharp,
-//       duration: theme.transitions.duration.leavingScreen,
-//     }),
-//     marginLeft: `-${drawerWidth}px`,
-//     ...(open && {
-//       transition: theme.transitions.create("margin", {
-//         easing: theme.transitions.easing.easeOut,
-//         duration: theme.transitions.duration.enteringScreen,
-//       }),
-//       marginLeft: 0,
-//     }),
-//   })
-// );
-
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
@@ -89,16 +70,16 @@ export default function SideBar({setProducts}) {
             onClick={handleDrawerOpen}
             edge="start"
           >
-           
             <img
               src="https://img.icons8.com/ios-glyphs/20/000000/menu--v1.png"
               alt="img"
             />
           </IconButton>
-          <NavBar setProducts={ setProducts}/>
+          <NavBar setProducts={setProducts} />
         </Toolbar>
       </AppBar>
       <Drawer
+        onClick={handleDrawerClose}
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -112,15 +93,17 @@ export default function SideBar({setProducts}) {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            <img src="https://img.icons8.com/ios-glyphs/20/000000/arrow-pointing-left--v2.png" alt="icon"/>
+          <Link to="/">Forever Gorgeous</Link>
+          <IconButton>
+            <img
+              src="https://img.icons8.com/ios-glyphs/20/000000/arrow-pointing-left--v2.png"
+              alt="icon"
+            />
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Link to="/about" onClick={handleDrawerClose}>
-          About
-        </Link>
-       
+        <Link to="/about">About</Link>
+
         <Divider />
         <List></List>
       </Drawer>
