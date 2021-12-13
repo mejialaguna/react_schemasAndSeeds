@@ -38,7 +38,6 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <span>Global-commerce</span> {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 }
@@ -47,7 +46,7 @@ const theme = createTheme();
 
 export default function SignupForm(props) {
   const [open, setOpen] = React.useState(false);
-  const { currentText, setCurrentText } = props;
+  const {setCurrentText } = props;
   const [userFormData, setUserFormData] = useState({
     username: "",
     email: "",
@@ -56,6 +55,9 @@ export default function SignupForm(props) {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [addUser, { error }] = useMutation(ADD_USER);
+  console.log(error)
+
+
 
    const handleClick = () => {
      setOpen(true);
@@ -78,7 +80,7 @@ export default function SignupForm(props) {
         },
       });
       Auth.login(data.addUser.token);
-      console.log(data);
+      console.log("data",data);
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -119,15 +121,17 @@ export default function SignupForm(props) {
           </Typography>
           <Box
             component="form"
+            // sx={{ mt: 3 }}
+            // style={display.width}
           >
-            <Alert
+            {/* <Alert
               dismissible
               onClose={() => setShowAlert(false)}
               show={showAlert}
               variant="danger"
             >
               sorry...that username is already taken
-            </Alert>
+            </Alert> */}
             <Grid container spacing={2}>
               <Grid item xs={12} htmlFor="username">
                 <TextField
@@ -143,6 +147,9 @@ export default function SignupForm(props) {
                   autoFocus
                 />
               </Grid>
+              {/* <Form.Control.Feedback type="invalid">
+                {error && <div>Username is required!</div>}
+              </Form.Control.Feedback> */}
               <Grid item xs={12} htmlFor="email">
                 <TextField
                   required
@@ -156,7 +163,9 @@ export default function SignupForm(props) {
                   value={userFormData.email}
                 />
               </Grid>
-              
+              {/* <Form.Control.Feedback type="invalid">
+                {error && <div>Email is required!</div>}
+              </Form.Control.Feedback> */}
               <Grid item xs={12} htmlFor="password">
                 <TextField
                   type="password"
@@ -169,17 +178,16 @@ export default function SignupForm(props) {
                   value={userFormData.password}
                 />
               </Grid>
-              <Form.Control.Feedback type="invalid">
+              {/* <Form.Control.Feedback type="invalid">
                 {error && <div>Password is required!</div>}
-              </Form.Control.Feedback>
+              </Form.Control.Feedback> */}
             </Grid>
-
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              style={{ display: "block" }}
               sx={{ mt: 3, mb: 2 }}
+              onClick={handleClick}
               disabled={
                 !(
                   userFormData.username &&
@@ -189,15 +197,22 @@ export default function SignupForm(props) {
               }
             >
               Sign Up
-
             </Button>
-            <Snackbar
-              setOpen={setOpen}
-              open={open}
-              severity={"info"}
-              message="Thank for Sign in up."
-            />
-
+            {error ? (
+              <Snackbar
+                setOpen={setOpen}
+                open={open}
+                severity={"error"}
+                message="wrong Email or Password"
+              />
+            ) : (
+              <Snackbar
+                setOpen={setOpen}
+                open={open}
+                severity={"success"}
+                message="Welcome Back."
+              />
+            )}
             <Grid container justifyContent="flex-end">
               <Grid item style={display.main}>
                 <Typography

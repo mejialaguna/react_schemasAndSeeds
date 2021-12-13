@@ -9,7 +9,6 @@ const userSchema = new Schema(
     username: {
       type: String,
       minLength: 6,
-      maxLength: 16,
       required: [true, "this must be fill"],
       trim: true,
       unique: true,

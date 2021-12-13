@@ -9,7 +9,6 @@ import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Alert, Form } from "react-bootstrap";
 import Auth from "../../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../../utils/mutations";
@@ -54,7 +53,6 @@ export default function SignIn(props) {
   const { setCurrentText } = props;
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
   const [login, { error }] = useMutation(LOGIN_USER);
   console.log(error)
 
@@ -84,7 +82,6 @@ export default function SignIn(props) {
       Auth.login(data.login.token);
       console.log("data", data);
     } catch (e) {
-      setShowAlert(true);
       console.error(e);
     }
 
@@ -123,14 +120,7 @@ export default function SignIn(props) {
               Sign in
             </Typography>
             <Box component="form" sx={{ mt: 1 }} style={display.width}>
-              <Alert
-                dismissible
-                onClose={() => setShowAlert(false)}
-                show={showAlert}
-                variant="danger"
-              >
-                <p> sorry ... wrong Email/password </p>
-              </Alert>
+             
               <Grid htmlFor="email">
                 <TextField
                   required
@@ -145,7 +135,6 @@ export default function SignIn(props) {
                   onChange={handleInputChange}
                 />
               </Grid>
-
               <Grid htmlFor="password">
                 <TextField
                   margin="normal"
@@ -171,13 +160,21 @@ export default function SignIn(props) {
               >
                 Sign In
               </Button>
-              
-              <Snackbar
-                setOpen={setOpen}
-                open={open}
-                severity={"success"}
-                message="Welcome Back."
-              />
+              {error ? (
+                <Snackbar
+                  setOpen={setOpen}
+                  open={open}
+                  severity={"error"}
+                  message="wrong Email or Password"
+                />
+              ) : (
+                <Snackbar
+                  setOpen={setOpen}
+                  open={open}
+                  severity={"success"}
+                  message="Welcome Back."
+                />
+              )}
               <Grid container>
                 <Grid item style={display.main}>
                   <Typography
