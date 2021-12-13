@@ -119,8 +119,6 @@ export default function SignupForm(props) {
           </Typography>
           <Box
             component="form"
-            // sx={{ mt: 3 }}
-            // style={display.width}
           >
             <Alert
               dismissible
@@ -145,9 +143,6 @@ export default function SignupForm(props) {
                   autoFocus
                 />
               </Grid>
-              <Form.Control.Feedback type="invalid">
-                {error && <div>Username is required!</div>}
-              </Form.Control.Feedback>
               <Grid item xs={12} htmlFor="email">
                 <TextField
                   required
@@ -161,9 +156,7 @@ export default function SignupForm(props) {
                   value={userFormData.email}
                 />
               </Grid>
-              <Form.Control.Feedback type="invalid">
-                {error && ( <div>Email is required!</div>)}
-              </Form.Control.Feedback>
+              
               <Grid item xs={12} htmlFor="password">
                 <TextField
                   type="password"
@@ -180,11 +173,12 @@ export default function SignupForm(props) {
                 {error && <div>Password is required!</div>}
               </Form.Control.Feedback>
             </Grid>
-            
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
+              style={{ display: "block" }}
               sx={{ mt: 3, mb: 2 }}
               disabled={
                 !(
@@ -194,17 +188,16 @@ export default function SignupForm(props) {
                 )
               }
             >
-              
-              <Snackbar
-                handleClick={handleClick}
-                setOpen={setOpen}
-                open={open}
-                currentText={currentText}
-                severity={"info"}
-                message="Thank for Sign in up."
-              />
+              Sign Up
+
             </Button>
-              
+            <Snackbar
+              setOpen={setOpen}
+              open={open}
+              severity={"info"}
+              message="Thank for Sign in up."
+            />
+
             <Grid container justifyContent="flex-end">
               <Grid item style={display.main}>
                 <Typography

@@ -9,7 +9,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 export default function SnackBars(props) {
-  const { open, handleClick, currentText, setOpen , severity ,message } = props;
+  const {severity ,message , open , setOpen} = props;
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -20,14 +20,7 @@ export default function SnackBars(props) {
   };
 
   return (
-    <Stack spacing={2} sx={{ width: "100%" }}>
-      <Button
-        style={{ color: "white" }}
-        variant="outlined"
-        onClick={handleClick}
-      >
-        {currentText}
-      </Button>
+    <Stack spacing={2} sx={{ width: "100%" }} >
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
           {message}

@@ -14,7 +14,6 @@ import Auth from "../../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../../utils/mutations";
 import Snackbar from "../../SnackBar";
-import { Link } from "react-router-dom";
 
 const display = {
   width: {
@@ -52,11 +51,12 @@ const theme = createTheme();
 
 export default function SignIn(props) {
   const [open, setOpen] = React.useState(false);
-  const { currentText, setCurrentText } = props;
+  const { setCurrentText } = props;
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [login, { error }] = useMutation(LOGIN_USER);
+  console.log(error)
 
  const handleClick = () => {
    setOpen(true);
@@ -84,6 +84,7 @@ export default function SignIn(props) {
       Auth.login(data.login.token);
       console.log("data", data);
     } catch (e) {
+      setShowAlert(true);
       console.error(e);
     }
 
@@ -128,7 +129,7 @@ export default function SignIn(props) {
                 show={showAlert}
                 variant="danger"
               >
-                sorry ... wrong Email/password
+                <p> sorry ... wrong Email/password </p>
               </Alert>
               <Grid htmlFor="email">
                 <TextField
@@ -144,9 +145,7 @@ export default function SignIn(props) {
                   onChange={handleInputChange}
                 />
               </Grid>
-              <Form.Control.Feedback type="invalid">
-                {error && <div>Email is required!</div>}
-              </Form.Control.Feedback>
+
               <Grid htmlFor="password">
                 <TextField
                   margin="normal"
@@ -161,32 +160,31 @@ export default function SignIn(props) {
                   value={userFormData.password}
                 />
               </Grid>
-              <Form.Control.Feedback type="invalid">
-                {error && <div>Password is required!</div>}
-              </Form.Control.Feedback>
               <Button
                 disabled={!(userFormData.email && userFormData.password)}
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                style={{ display: "block" }}
+                onClick={handleClick} //snackbar handleclick event
               >
-                <Snackbar
-                  handleClick={handleClick}
-                  setOpen={setOpen}
-                  open={open}
-                  currentText={currentText}
-                  severity={"success"}
-                  message="Welcome Back."
-                />
+                Sign In
               </Button>
+              
+              <Snackbar
+                setOpen={setOpen}
+                open={open}
+                severity={"success"}
+                message="Welcome Back."
+              />
               <Grid container>
                 <Grid item style={display.main}>
                   <Typography
                     onClick={() => setCurrentText("Sign UP")}
                     style={display.pointer}
                   >
-                   Don't have an account? Sign Up
+                    Don't have an account? Sign Up
                   </Typography>
                 </Grid>
               </Grid>
