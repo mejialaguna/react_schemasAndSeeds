@@ -84,7 +84,7 @@ export default function FreeSolo({ setProducts }) {
       } catch (err) {
         console.error(err);
       }
-      // setSearchInput(" ");
+      setSearchInput("");
     } else {
       try {
         if (categoryLoading) {
@@ -119,7 +119,7 @@ export default function FreeSolo({ setProducts }) {
   return (
     <div>
       <form style={display.form} onSubmit={handleSubmit}>
-        <Stack spacing={2} sx={{ width: 500 }}>
+        <Stack spacing={2} sx={{ width: 400 }}>
           <Autocomplete
             id="size-small-outlined"
             size="small"

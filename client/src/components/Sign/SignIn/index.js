@@ -186,7 +186,7 @@ export default function SignIn(props) {
                     onClick={() => setCurrentText("Sign UP")}
                     style={display.pointer}
                   >
-                    <Link to="/signup">Don't have an account? Sign Up</Link>
+                   Don't have an account? Sign Up
                   </Typography>
                 </Grid>
               </Grid>

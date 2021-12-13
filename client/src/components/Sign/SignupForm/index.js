@@ -14,7 +14,6 @@ import Auth from "../../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../../utils/mutations";
 import Snackbar from "../../SnackBar";
-import { Link } from "react-router-dom";
 
 const display = {
   width: {
@@ -58,9 +57,6 @@ export default function SignupForm(props) {
   const [showAlert, setShowAlert] = useState(false);
   const [addUser, { error }] = useMutation(ADD_USER);
 
-
-
-
    const handleClick = () => {
      setOpen(true);
    };
@@ -82,7 +78,7 @@ export default function SignupForm(props) {
         },
       });
       Auth.login(data.addUser.token);
-      console.log("data",data);
+      console.log(data);
     } catch (e) {
       console.error(e);
       setShowAlert(true);
@@ -166,7 +162,7 @@ export default function SignupForm(props) {
                 />
               </Grid>
               <Form.Control.Feedback type="invalid">
-                {error && <div>Email is required!</div>}
+                {error && ( <div>Email is required!</div>)}
               </Form.Control.Feedback>
               <Grid item xs={12} htmlFor="password">
                 <TextField
@@ -184,6 +180,7 @@ export default function SignupForm(props) {
                 {error && <div>Password is required!</div>}
               </Form.Control.Feedback>
             </Grid>
+            
             <Button
               type="submit"
               fullWidth
@@ -197,6 +194,7 @@ export default function SignupForm(props) {
                 )
               }
             >
+              
               <Snackbar
                 handleClick={handleClick}
                 setOpen={setOpen}
@@ -206,6 +204,7 @@ export default function SignupForm(props) {
                 message="Thank for Sign in up."
               />
             </Button>
+              
             <Grid container justifyContent="flex-end">
               <Grid item style={display.main}>
                 <Typography
@@ -213,7 +212,7 @@ export default function SignupForm(props) {
                   onClick={() => setCurrentText("Sign In")}
                   style={display.pointer}
                 >
-                  <Link to="/login">Already have an account? Sign in</Link>
+                  Already have an account? Sign in
                 </Typography>
               </Grid>
             </Grid>

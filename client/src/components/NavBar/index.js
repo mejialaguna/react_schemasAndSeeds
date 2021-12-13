@@ -12,10 +12,10 @@ const display = {
   },
   inline: {
     display: "flex",
-    marginTop: 8
+    // marginTop: 8
   },
   modalmargin: {
-    marginTop: "100px",
+    marginTop: "50px",
   },
    border: {
     border: "none"
