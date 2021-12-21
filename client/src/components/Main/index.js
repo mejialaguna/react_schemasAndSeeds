@@ -35,6 +35,7 @@ const display = {
 };
 
 const Main = () => {
+  // useContext react hook
   const products = useContext(ProductContext);
   return (
     <div>

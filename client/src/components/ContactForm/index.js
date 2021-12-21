@@ -153,7 +153,7 @@ function ContactForm() {
                   severity="success"
                   sx={{ width: "100%" }}
                 >
-                  Thank you for your feedBack , we appreciate your bussiness !
+                  Thank you for your feedBack , we appreciate your business!
                 </Alert>
               </Snackbar>
             </Stack>

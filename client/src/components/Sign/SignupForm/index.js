@@ -9,7 +9,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Alert, Form } from "react-bootstrap";
 import Auth from "../../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../../utils/mutations";
@@ -53,7 +52,6 @@ export default function SignupForm(props) {
     password: "",
   });
   const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
   const [addUser, { error }] = useMutation(ADD_USER);
   console.log(error)
 
@@ -83,7 +81,6 @@ export default function SignupForm(props) {
       console.log("data",data);
     } catch (e) {
       console.error(e);
-      setShowAlert(true);
     }
 
     setUserFormData({
@@ -121,17 +118,7 @@ export default function SignupForm(props) {
           </Typography>
           <Box
             component="form"
-            // sx={{ mt: 3 }}
-            // style={display.width}
           >
-            {/* <Alert
-              dismissible
-              onClose={() => setShowAlert(false)}
-              show={showAlert}
-              variant="danger"
-            >
-              sorry...that username is already taken
-            </Alert> */}
             <Grid container spacing={2}>
               <Grid item xs={12} htmlFor="username">
                 <TextField
@@ -147,9 +134,6 @@ export default function SignupForm(props) {
                   autoFocus
                 />
               </Grid>
-              {/* <Form.Control.Feedback type="invalid">
-                {error && <div>Username is required!</div>}
-              </Form.Control.Feedback> */}
               <Grid item xs={12} htmlFor="email">
                 <TextField
                   required
@@ -163,9 +147,6 @@ export default function SignupForm(props) {
                   value={userFormData.email}
                 />
               </Grid>
-              {/* <Form.Control.Feedback type="invalid">
-                {error && <div>Email is required!</div>}
-              </Form.Control.Feedback> */}
               <Grid item xs={12} htmlFor="password">
                 <TextField
                   type="password"
@@ -178,9 +159,6 @@ export default function SignupForm(props) {
                   value={userFormData.password}
                 />
               </Grid>
-              {/* <Form.Control.Feedback type="invalid">
-                {error && <div>Password is required!</div>}
-              </Form.Control.Feedback> */}
             </Grid>
             <Button
               type="submit"
